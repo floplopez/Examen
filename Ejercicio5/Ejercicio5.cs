@@ -1,0 +1,1 @@
+//La clase String proporciona muchos métodos para crear, manipular y comparar cadenas de forma segura
