@@ -6,22 +6,25 @@ namespace examen
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Ingrese un numero positivo y distinto de cero");
-            int numeroIngresado = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("Ingrese un numero positivo");
+            string numeroIngresado = Console.ReadLine();
+            int numero;
+            bool validacionNumero = Int32.TryParse(numeroIngresado, out numero);
             
-            if(numeroIngresado > 0){
-                int  cantitdadDeVeces = 1;
-                for(int i=1; i<=numeroIngresado; i++){
-                cantitdadDeVeces = i;
-                } 
-                if (cantitdadDeVeces==1){
-                Console.WriteLine("El numero ingesado "+numeroIngresado+", se forma sumando "+cantitdadDeVeces+" vez 1");
-                }else{
-                Console.WriteLine("El numero ingesado "+numeroIngresado+", se forma sumando "+cantitdadDeVeces+" veces 1");
-                }
-            }else{
-                Console.WriteLine("Se ingreso un numero menor o igual a 0");
-                }
+            if(validacionNumero && numero>0){
+                    int respuesta= 0;
+
+                    for(int i=1; i<numero; i++){
+                    respuesta += i;
+
+                    }
+                    Console.WriteLine("El resultado de la suma de numero/os que antecede al "+numero+" es "+respuesta);
+
+            }
+            else{
+                Console.WriteLine("Se ingreso un numero invalido o un string");
+
+            }      
         }
     }
 }

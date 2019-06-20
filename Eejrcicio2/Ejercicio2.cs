@@ -5,49 +5,53 @@ namespace Examen
     public class Ejercicio2
     {
         static void Main(string[] args){
-            Console.WriteLine("Hoy es Lunes. Ingrese la temperatura maxima alcanzada hoy, en grados");
-            int[] arrayTemp = new int[7];
-            arrayTemp [0] = Int32.Parse(Console.ReadLine());
             
-            Console.WriteLine("Hoy es Martes. Ingrese la temperatura maxima alcanzada hoy, en grados");
-            arrayTemp [1] = Int32.Parse(Console.ReadLine());
+            decimal[] arrayDeTemperaturas = new decimal[7];
+            bool validacionNumeroIngresado;
+            decimal temperatura;
 
-            Console.WriteLine("Hoy es Miercoles. Ingrese la temperatura maxima alcanzada hoy, en grados");
-            arrayTemp [2] = Int32.Parse(Console.ReadLine());
-            
-            Console.WriteLine("Hoy es Jueves. Ingrese la temperatura maxima alcanzada hoy, en grados");
-            arrayTemp [3] = Int32.Parse(Console.ReadLine());
-            
-            Console.WriteLine("Hoy es Viernes. Ingrese la temperatura maxima alcanzada hoy, en grados");
-            arrayTemp [4] = Int32.Parse(Console.ReadLine());
-            
-            Console.WriteLine("Hoy es Sabado. Ingrese la temperatura maxima alcanzada hoy, en grados");
-            arrayTemp [5] = Int32.Parse(Console.ReadLine());
-            
-            Console.WriteLine("Hoy es Domingo. Ingrese la temperatura maxima alcanzada hoy, en grados");
-            arrayTemp [6] = Int32.Parse(Console.ReadLine());
+            for(int i=0; i<7; i++){
 
-            int temperaturaMax=arrayTemp[0];  
-            int temperaturaMin=arrayTemp[0];
+                Console.WriteLine("Dia "+(i+1)+": Ingrese la temperatura maxima alcanzada, en grados");
+                
+                validacionNumeroIngresado = decimal.TryParse(Console.ReadLine(),out temperatura);
+                    
+                if(validacionNumeroIngresado){
+                        
+                    arrayDeTemperaturas[i] = temperatura;
 
-            for(int i=0; i<arrayTemp.Length; i++){
-                if(temperaturaMax<arrayTemp[i]){
-                    temperaturaMax=arrayTemp[i];
+                }else{
+                        
+                    Console.WriteLine("Ha ingresado una temperatura invalida");
+                }
+            }
+
+            decimal temperaturaMax= decimal.MinValue;  
+            int diaTemperaturaMax=0;
+            decimal temperaturaMin= decimal.MaxValue;
+            int diaTemperaturaMin=0;
+
+            for(int i=0; i<7; i++){
+
+                if(temperaturaMax<=arrayDeTemperaturas[i]){
+                    temperaturaMax=arrayDeTemperaturas[i];
+                    diaTemperaturaMax=i+1;
                 }
 
-                if(temperaturaMin>arrayTemp[i]){
-                    temperaturaMin=arrayTemp[i];
+                if(temperaturaMin>arrayDeTemperaturas[i]){
+                    temperaturaMin=arrayDeTemperaturas[i];
+                    diaTemperaturaMin=i+1;
                 }
             }
             
-            int promedio=(temperaturaMax+temperaturaMin)/2;
+            decimal promedioDeLaSemana=(temperaturaMax+temperaturaMin)/7;
 
-            Console.WriteLine("La tempatura maxima fue de "+temperaturaMax+"°.");
+            Console.WriteLine("El dia de mayor temperatura fue el dia "+diaTemperaturaMax);
             
-            Console.WriteLine("La tempatura minima fue de "+temperaturaMin+"°.");
+            Console.WriteLine("El dia de menor temperatura fue el dia "+diaTemperaturaMin);
             
-            Console.WriteLine("La tempatura promedio fue de "+promedio+"°.");
+            Console.WriteLine("La temperatura promedio fue de "+promedioDeLaSemana+"°.");
 
+            }
         }
     }
-}
