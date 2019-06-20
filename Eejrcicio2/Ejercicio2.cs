@@ -6,15 +6,15 @@ namespace Examen
     {
         static void Main(string[] args){
             
-            decimal[] arrayDeTemperaturas = new decimal[7];
+            float[] arrayDeTemperaturas = new float[7];
             bool validacionNumeroIngresado;
-            decimal temperatura;
+            float temperatura;
 
             for(int i=0; i<7; i++){
 
                 Console.WriteLine("Dia "+(i+1)+": Ingrese la temperatura maxima alcanzada, en grados");
                 
-                validacionNumeroIngresado = decimal.TryParse(Console.ReadLine(),out temperatura);
+                validacionNumeroIngresado = float.TryParse(Console.ReadLine(),out temperatura);
                     
                 if(validacionNumeroIngresado){
                         
@@ -26,9 +26,9 @@ namespace Examen
                 }
             }
 
-            decimal temperaturaMax= decimal.MinValue;  
+            float temperaturaMax= float.MinValue;  
             int diaTemperaturaMax=0;
-            decimal temperaturaMin= decimal.MaxValue;
+            float temperaturaMin= float.MaxValue;
             int diaTemperaturaMin=0;
 
             for(int i=0; i<7; i++){
@@ -44,7 +44,7 @@ namespace Examen
                 }
             }
             
-            decimal promedioDeLaSemana=(temperaturaMax+temperaturaMin)/7;
+            float promedioDeLaSemana=(temperaturaMax+temperaturaMin)/7;
 
             Console.WriteLine("El dia de mayor temperatura fue el dia "+diaTemperaturaMax);
             
